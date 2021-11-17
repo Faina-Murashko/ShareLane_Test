@@ -89,4 +89,47 @@ public class SignUpTest {
 
 
     }
+    @Test
+    public void signUpInfoNewUser(){
+
+        //Открытие страницы https://www.sharelane.com/cgi-bin/register.py?page=1&zip_code=12345
+        System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.sharelane.com/cgi-bin/register.py?page=1&zip_code=12345");
+
+
+        //Ввод данных нового пользователя;
+        //FirstName
+        WebElement firstNameInput = driver.findElement(By.cssSelector("[name=first_name]"));
+        firstNameInput.sendKeys("Konstantin");
+
+        //LastName
+        WebElement lastNameInput = driver.findElement(By.cssSelector("[name=last_name]"));
+        lastNameInput.sendKeys("Ivanov");
+
+        //Email
+        WebElement emailUserInput = driver.findElement(By.cssSelector("[name=email]"));
+        emailUserInput.sendKeys("something@flag.com");
+
+        //Password
+        WebElement passwordForExample = driver.findElement(By.cssSelector("[name=password1]"));
+        passwordForExample.sendKeys("87654321");
+
+        //ConfirmPassword
+        WebElement confirmPasswordForExample = driver.findElement(By.cssSelector("[name=password2]"));
+        confirmPasswordForExample.sendKeys("87654321");
+
+        //Нажимаем кнопку Register
+        WebElement registerButton = driver.findElement(By.cssSelector("[value=Register]"));
+        registerButton.click();
+
+
+
+        //Закрыть браузер.
+        driver.quit();
+
+
+
+
+    }
 }
