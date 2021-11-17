@@ -123,10 +123,16 @@ public class SignUpTest {
         WebElement registerButton = driver.findElement(By.cssSelector("[value=Register]"));
         registerButton.click();
 
+        //Убедиться в успешной регистрации
+         boolean succsessfulRegisterNewUser = driver.findElement(By.cssSelector("[class=confirmation_message]")).isDisplayed();
+         Assert.assertTrue(true);
 
 
         //Закрыть браузер.
         driver.quit();
+
+
+
 
 
 
