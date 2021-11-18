@@ -119,16 +119,16 @@ public class SignUpTest {
         registerButton.click();
 
         //Убедиться в успешной регистрации
-        boolean succsessfulRegisterNewUser = driver.findElement(By.cssSelector("[class=confirmation_message]")).isDisplayed();
+        boolean successfulRegisterNewUser = driver.findElement(By.cssSelector("[class=confirmation_message]")).isDisplayed();
         Assert.assertTrue(true);
-        boolean successfulRegisterNewUser = driver.findElement(By.cssSelector(".confirmation_message")).isDisplayed();
-        Assert.assertTrue(successfulRegisterNewUser, "Account is created!");
+        boolean successfulRegisterNewUser1 = driver.findElement(By.cssSelector(".confirmation_message")).isDisplayed();
+        Assert.assertTrue(successfulRegisterNewUser1, "Account is created!");
 
         //Закрыть браузер.
         driver.quit();
     }
 
-   /* @Test //Баг (при вводе данных которые отличаются от основного пароля, в поле подтверждение пароля,
+    @Test //Баг (при вводе данных которые отличаются от основного пароля, в поле подтверждение пароля,
     // регистрация происходит успешно, но должна быть ошибка с указанием введенного пароля который не сопадает)
     public void signUpInfoNewUserWrongPassword2() {
 
@@ -164,9 +164,10 @@ public class SignUpTest {
         registerButton.click();
 
         //Убедиться в не успешной регистрации
-        boolean succsessfulRegisterNewUser = driver.findElement(By.cssSelector("[class=confirmation_message]")).isDisplayed();
-        Assert.fail();
+        boolean successfulRegisterNewUser2 = driver.findElement(By.cssSelector(".error_message")).isDisplayed();
+        Assert.assertTrue(successfulRegisterNewUser2, "Oops, error on page. Some of you fields have invalid data or email was previously used");
 
-
-    }*/
+        //Закрыть браузер.
+        driver.quit();
+    }
 }
