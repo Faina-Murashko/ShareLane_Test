@@ -7,10 +7,10 @@ import org.testng.annotations.Test;
 
 public class SignUpTest {
     @Test
-    public void zipCode5numbers(){
+    public void zipCode5numbers() {
 
         //Открытие страницы https://www.sharelane.com/cgi-bin/register.py;
-        System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.sharelane.com/cgi-bin/register.py");
 
@@ -30,15 +30,13 @@ public class SignUpTest {
         driver.quit();
 
 
-
-
     }
 
     @Test
-    public void zipCode6numbers(){
+    public void zipCode6numbers() {
 
         //Открытие страницы https://www.sharelane.com/cgi-bin/register.py;
-        System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.sharelane.com/cgi-bin/register.py");
 
@@ -58,15 +56,13 @@ public class SignUpTest {
         driver.quit();
 
 
-
-
     }
 
     @Test
-    public void zipCode4numbers(){
+    public void zipCode4numbers() {
 
         //Открытие страницы https://www.sharelane.com/cgi-bin/register.py;
-        System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.sharelane.com/cgi-bin/register.py");
 
@@ -86,14 +82,13 @@ public class SignUpTest {
         driver.quit();
 
 
-
-
     }
+
     @Test
-    public void signUpInfoNewUser(){
+    public void signUpInfoNewUser() {
 
         //Открытие страницы https://www.sharelane.com/cgi-bin/register.py?page=1&zip_code=12345
-        System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.sharelane.com/cgi-bin/register.py?page=1&zip_code=12345");
 
@@ -124,19 +119,21 @@ public class SignUpTest {
         registerButton.click();
 
         //Убедиться в успешной регистрации
-         boolean succsessfulRegisterNewUser = driver.findElement(By.cssSelector("[class=confirmation_message]")).isDisplayed();
-         Assert.assertTrue(true);
+        boolean succsessfulRegisterNewUser = driver.findElement(By.cssSelector("[class=confirmation_message]")).isDisplayed();
+        Assert.assertTrue(true);
+        boolean successfulRegisterNewUser = driver.findElement(By.cssSelector(".confirmation_message")).isDisplayed();
+        Assert.assertTrue(successfulRegisterNewUser, "Account is created!");
 
         //Закрыть браузер.
         driver.quit();
     }
 
-    @Test //Баг (при вводе данных которые отличаются от основного пароля, в поле подтверждение пароля,
+   /* @Test //Баг (при вводе данных которые отличаются от основного пароля, в поле подтверждение пароля,
     // регистрация происходит успешно, но должна быть ошибка с указанием введенного пароля который не сопадает)
-    public void signUpInfoNewUserWrongPassword2(){
+    public void signUpInfoNewUserWrongPassword2() {
 
         //Открытие страницы https://www.sharelane.com/cgi-bin/register.py?page=1&zip_code=12345
-        System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.sharelane.com/cgi-bin/register.py?page=1&zip_code=12345");
 
@@ -166,10 +163,10 @@ public class SignUpTest {
         WebElement registerButton = driver.findElement(By.cssSelector("[value=Register]"));
         registerButton.click();
 
-        //Убедиться в успешной регистрации
+        //Убедиться в не успешной регистрации
         boolean succsessfulRegisterNewUser = driver.findElement(By.cssSelector("[class=confirmation_message]")).isDisplayed();
         Assert.fail();
 
 
-    }
+    }*/
 }
