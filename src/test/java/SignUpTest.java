@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SignUpTest {
-    @Test
+    @Test (priority = 1)
     public void zipCode5numbers() {
 
         //Открытие страницы https://www.sharelane.com/cgi-bin/register.py;
@@ -32,7 +32,7 @@ public class SignUpTest {
 
     }
 
-    @Test
+    @Test (priority = 2)
     public void zipCode6numbers() {
 
         //Открытие страницы https://www.sharelane.com/cgi-bin/register.py;
@@ -58,7 +58,7 @@ public class SignUpTest {
 
     }
 
-    @Test
+    @Test (priority = 3)
     public void zipCode4numbers() {
 
         //Открытие страницы https://www.sharelane.com/cgi-bin/register.py;
@@ -84,7 +84,7 @@ public class SignUpTest {
 
     }
 
-    @Test
+    @Test (priority = 4)
     public void signUpInfoNewUser() {
 
         //Открытие страницы https://www.sharelane.com/cgi-bin/register.py?page=1&zip_code=12345
@@ -120,15 +120,13 @@ public class SignUpTest {
 
         //Убедиться в успешной регистрации
         boolean successfulRegisterNewUser = driver.findElement(By.cssSelector("[class=confirmation_message]")).isDisplayed();
-        Assert.assertTrue(true);
-        boolean successfulRegisterNewUser1 = driver.findElement(By.cssSelector(".confirmation_message")).isDisplayed();
-        Assert.assertTrue(successfulRegisterNewUser1, "Account is created!");
+        Assert.assertTrue(successfulRegisterNewUser, "Account is created!");
 
         //Закрыть браузер.
         driver.quit();
     }
 
-    @Test //Баг (при вводе данных которые отличаются от основного пароля, в поле подтверждение пароля,
+    @Test (priority = 5) //Баг (при вводе данных которые отличаются от основного пароля, в поле подтверждение пароля,
     // регистрация происходит успешно, но должна быть ошибка с указанием введенного пароля который не сопадает)
     public void signUpInfoNewUserWrongPassword2() {
 
